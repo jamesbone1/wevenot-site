@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隐私保护指引 — Wevenot</title>
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --text: #1a1208;
+      --text-muted: #6b5c3e;
+      --accent: #b28442;
+      --border: #e8e0d0;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky; top: 0; z-index: 10;
+    }
+    header .inner {
+      max-width: 780px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: #1a0f06;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700;
+      color: #e8b95e;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+    .logo-name { font-size: 17px; font-weight: 600; color: var(--text); }
+    .logo-tag  { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+    main {
+      max-width: 780px; margin: 48px auto 80px;
+      padding: 0 24px;
+    }
+    .page-title {
+      font-size: 30px; font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .page-meta {
+      font-size: 14px; color: var(--text-muted);
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-meta strong { color: var(--accent); }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;
+               color: var(--text-muted); margin-bottom: 14px; }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { color: var(--accent); text-decoration: none; font-size: 14px; }
+    .toc a:hover { text-decoration: underline; }
+    section { margin-bottom: 52px; }
+    h2 {
+      font-size: 20px; font-weight: 700;
+      margin-bottom: 16px;
+      padding-top: 8px;
+      border-top: 2px solid var(--accent);
+      display: inline-block;
+    }
+    h3 { font-size: 16px; font-weight: 600; margin: 24px 0 10px; }
+    p  { margin-bottom: 14px; }
+    ul, ol { padding-left: 22px; margin-bottom: 14px; }
+    li { margin-bottom: 6px; }
+    .highlight-box {
+      background: #fffbf2;
+      border: 1px solid #f0dfa8;
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .highlight-box strong { color: var(--accent); }
+    .tag {
+      display: inline-block;
+      background: #f0f8f0;
+      color: #2d6e3a;
+      border: 1px solid #b8dfc0;
+      border-radius: 4px;
+      font-size: 12px; font-weight: 600;
+      padding: 2px 8px;
+      margin-right: 6px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { background: #f5f0e8; text-align: left; padding: 10px 14px; font-weight: 600; }
+    td { padding: 10px 14px; border-top: 1px solid var(--border); vertical-align: top; }
+    tr:last-child td { border-bottom: 1px solid var(--border); }
+    .lang-toggle {
+      display: flex; gap: 8px; margin-bottom: 32px;
+    }
+    .lang-btn {
+      padding: 6px 16px; border-radius: 20px; font-size: 13px;
+      border: 1px solid var(--border); cursor: pointer;
+      background: var(--surface); color: var(--text-muted);
+      transition: all 0.15s;
+    }
+    .lang-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    footer {
+      text-align: center; padding: 32px 24px;
+      font-size: 13px; color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) {
+      .page-title { font-size: 24px; }
+      main { margin-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="logo-mark">W</div>
+    <span class="logo-name">Wevenot</span>
+    <span class="logo-tag">Privacy Policy</span>
+  </div>
+</header>
+
+<main>
+
+  <h1 class="page-title">隐私保护指引</h1>
+  <p class="page-meta">
+    <strong>最后更新：2026年3月31日</strong> &nbsp;·&nbsp; 版本 1.0 &nbsp;·&nbsp;
+    适用于 Wevenot macOS 应用（Bundle ID: app.wevenot.mac）
+  </p>
+
+  <div class="highlight-box">
+    <strong>核心承诺：</strong>Wevenot 是一款本地优先（Local-First）的笔记应用。
+    您的笔记数据 <strong>永远不会离开您的设备</strong>，不会上传到任何服务器，不需要注册账号。
+  </div>
+
+  <div class="toc">
+    <h2>目录</h2>
+    <ol>
+      <li><a href="#s1">适用范围</a></li>
+      <li><a href="#s2">我们收集哪些信息</a></li>
+      <li><a href="#s3">我们不收集什么</a></li>
+      <li><a href="#s4">数据存储位置</a></li>
+      <li><a href="#s5">第三方服务</a></li>
+      <li><a href="#s6">AI 功能与数据处理</a></li>
+      <li><a href="#s7">数据安全</a></li>
+      <li><a href="#s8">您的权利与控制</a></li>
+      <li><a href="#s9">儿童隐私</a></li>
+      <li><a href="#s10">隐私政策变更</a></li>
+      <li><a href="#s11">联系我们</a></li>
+    </ol>
+  </div>
+
+  <section id="s1">
+    <h2>一、适用范围</h2>
+    <p>本隐私保护指引（"本指引"）适用于由许昌（个人开发者，Apple ID: 963971056@qq.com）开发和发布的 Wevenot macOS 应用程序（以下简称"本应用"或"Wevenot"）。</p>
+    <p>本指引描述了本应用在您使用过程中涉及的信息处理方式。请在使用本应用前仔细阅读本指引。</p>
+  </section>
+
+  <section id="s2">
+    <h2>二、我们收集哪些信息</h2>
+    <p>Wevenot 的设计原则是最小化数据收集。本应用本身<strong>不收集任何可识别个人身份的信息</strong>。</p>
+
+    <h3>应用内本地生成的数据</h3>
+    <p>以下数据由您在使用中产生，并<strong>仅存储于您的本地设备</strong>，开发者无法访问：</p>
+    <ul>
+      <li>您创建的笔记内容（文字、格式、附件）</li>
+      <li>笔记分类、标签、文件夹结构</li>
+      <li>应用偏好设置（界面主题、字体大小等）</li>
+      <li>备份文件（存储于您指定的本地目录）</li>
+    </ul>
+
+    <h3>App Store 相关数据</h3>
+    <p>通过 Mac App Store 下载和安装本应用时，Apple 会根据其隐私政策收集相关信息（如下载记录、崩溃报告等）。此类数据由 Apple 处理，与 Wevenot 开发者无关。</p>
+  </section>
+
+  <section id="s3">
+    <h2>三、我们不收集什么</h2>
+    <div class="highlight-box">
+      <strong>以下信息 Wevenot 从不收集、从不传输：</strong>
+    </div>
+    <ul>
+      <li><span class="tag">绝不</span> 您的姓名、邮箱、手机号等身份信息</li>
+      <li><span class="tag">绝不</span> 您的笔记内容（不会上传到任何服务器）</li>
+      <li><span class="tag">绝不</span> 您的设备位置信息</li>
+      <li><span class="tag">绝不</span> 设备唯一标识符（Device ID、IDFA 等）</li>
+      <li><span class="tag">绝不</span> 使用行为分析、埋点数据</li>
+      <li><span class="tag">绝不</span> 第三方广告追踪</li>
+      <li><span class="tag">绝不</span> 联系人、相册、麦克风、摄像头等系统权限（本应用不申请）</li>
+    </ul>
+  </section>
+
+  <section id="s4">
+    <h2>四、数据存储位置</h2>
+    <p>Wevenot 使用 SQLite 数据库存储您的所有笔记数据。数据文件存储于以下本地路径之一（按优先级）：</p>
+
+    <table>
+      <tr>
+        <th>情况</th>
+        <th>存储路径</th>
+      </tr>
+      <tr>
+        <td>通过 Mac App Store 安装（沙盒环境）</td>
+        <td><code>~/Library/Containers/app.wevenot.mac/Data/Documents/Wevenot/</code></td>
+      </tr>
+      <tr>
+        <td>直接运行（开发/测试模式）</td>
+        <td><code>~/Documents/Wevenot/</code></td>
+      </tr>
+    </table>
+
+    <p>数据库文件名为 <code>wevenot.db</code>。您可以随时访问、复制、删除这些文件——这是您的数据，您拥有完全控制权。</p>
+    <p>本应用<strong>不会将数据上传到任何云端服务器</strong>，也不使用任何第三方云存储服务。</p>
+  </section>
+
+  <section id="s5">
+    <h2>五、第三方服务</h2>
+    <p>Wevenot 当前版本<strong>不集成任何第三方分析、广告或追踪服务</strong>。</p>
+    <p>如果您启用了可选的云存储备份功能（如 COS 对象存储），您需要自行提供存储服务的访问凭证。备份数据的安全性由您选择的存储服务提供商的隐私政策约束，请参阅相关服务商的说明。</p>
+  </section>
+
+  <section id="s6">
+    <h2>六、AI 功能与数据处理</h2>
+    <p>Wevenot 内置 AI 辅助整理功能，用于自动标签和分类。关于该功能的数据处理方式：</p>
+    <ul>
+      <li>当前版本的 AI 功能在<strong>本地设备上运行</strong>，不调用任何在线 AI 服务</li>
+      <li>您的笔记内容不会被发送至任何 AI 服务提供商</li>
+      <li>如未来版本引入在线 AI 服务，我们将在更新前明确告知并在本指引中说明，并要求您明确同意</li>
+    </ul>
+  </section>
+
+  <section id="s7">
+    <h2>七、数据安全</h2>
+    <p>由于所有数据均存储于您的本地设备，数据安全主要依赖于您的 Mac 系统安全机制：</p>
+    <ul>
+      <li>macOS 的用户权限系统保护数据不被其他用户访问</li>
+      <li>通过 Mac App Store 安装时，应用运行于 macOS 沙盒环境中</li>
+      <li>建议您开启 Mac 全盘加密（FileVault）以进一步保护数据</li>
+      <li>建议定期使用 Wevenot 内置备份功能或 Time Machine 备份数据</li>
+    </ul>
+    <p>Wevenot 开发者无法访问存储于您设备上的任何数据，因此也无法为因设备丢失、损坏或用户误删导致的数据损失负责。</p>
+  </section>
+
+  <section id="s8">
+    <h2>八、您的权利与控制</h2>
+    <p>由于 Wevenot 不收集您的个人数据，您天然拥有对数据的完全控制：</p>
+    <ul>
+      <li><strong>查看数据：</strong>直接访问 <code>~/Documents/Wevenot/wevenot.db</code> 或使用应用内导出功能</li>
+      <li><strong>删除数据：</strong>卸载应用时，可同时手动删除上述数据目录</li>
+      <li><strong>导出数据：</strong>使用应用内"导出"功能将笔记导出为文本文件</li>
+      <li><strong>迁移数据：</strong>将数据库文件复制到新设备后，使用 Wevenot 即可直接打开</li>
+    </ul>
+    <p>如您是欧盟居民，依据 GDPR，您还享有数据可携带权、反对权等。由于我们不持有任何您的数据，这些权利由您通过直接访问本地数据文件来行使。</p>
+  </section>
+
+  <section id="s9">
+    <h2>九、儿童隐私</h2>
+    <p>Wevenot 不面向 13 周岁以下儿童设计，也不会故意收集儿童的个人信息。由于本应用不收集任何用户数据，儿童在使用时与成人享有同等的隐私保护。</p>
+  </section>
+
+  <section id="s10">
+    <h2>十、隐私政策变更</h2>
+    <p>我们可能会不定期更新本隐私保护指引。重大变更将通过以下方式通知您：</p>
+    <ul>
+      <li>在本页面更新"最后更新日期"</li>
+      <li>在应用版本更新说明中注明</li>
+      <li>如涉及数据收集方式的重大变更，将在应用内以弹窗方式告知</li>
+    </ul>
+    <p>继续使用本应用视为您接受更新后的隐私政策。建议您定期查阅本页面。</p>
+  </section>
+
+  <section id="s11">
+    <h2>十一、联系我们</h2>
+    <p>如您对本隐私保护指引有任何疑问、意见或投诉，请通过以下方式联系我们：</p>
+    <ul>
+      <li><strong>开发者：</strong>许昌（Xu Chang）</li>
+      <li><strong>邮箱：</strong><a href="mailto:963971056@qq.com" style="color:var(--accent)">963971056@qq.com</a></li>
+      <li><strong>响应时间：</strong>我们将在收到邮件后 7 个工作日内回复</li>
+    </ul>
+    <p>我们重视您的隐私，感谢您选择 Wevenot。</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Xu Chang. All rights reserved.</p>
+  <p style="margin-top:8px">
+    <a href="privacy.html">隐私政策</a> &nbsp;·&nbsp;
+    <a href="support.html">用户支持</a>
+  </p>
+</footer>
+
+</body>
+</html>

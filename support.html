@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户支持 — Wevenot</title>
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --text: #1a1208;
+      --text-muted: #6b5c3e;
+      --accent: #b28442;
+      --border: #e8e0d0;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky; top: 0; z-index: 10;
+    }
+    header .inner {
+      max-width: 780px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: #1a0f06;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700;
+      color: #e8b95e;
+      flex-shrink: 0;
+    }
+    .logo-name { font-size: 17px; font-weight: 600; }
+    .logo-tag  { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+    main { max-width: 780px; margin: 48px auto 80px; padding: 0 24px; }
+    .page-title { font-size: 30px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; }
+    .page-meta {
+      font-size: 14px; color: var(--text-muted);
+      margin-bottom: 40px; padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    /* Hero contact card */
+    .contact-card {
+      background: linear-gradient(135deg, #1a0f06 0%, #2e1a0a 100%);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 48px;
+      color: #fff;
+      display: flex; align-items: center; gap: 32px;
+      flex-wrap: wrap;
+    }
+    .contact-card .icon { font-size: 48px; line-height: 1; }
+    .contact-card h2 { font-size: 20px; margin-bottom: 8px; color: #e8b95e; }
+    .contact-card p  { font-size: 14px; color: #c4a87a; margin-bottom: 16px; }
+    .contact-card a {
+      display: inline-block;
+      background: #e8b95e;
+      color: #1a0f06;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 10px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .contact-card a:hover { background: #f0ca7a; }
+    /* FAQ */
+    h2.section-title {
+      font-size: 22px; font-weight: 700;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 18px 22px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      user-select: none;
+    }
+    .faq-q::after {
+      content: "＋";
+      color: var(--accent);
+      font-size: 18px;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-q::after { content: "－"; }
+    .faq-a {
+      display: none;
+      padding: 0 22px 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a code {
+      background: #f0ece4;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 13px;
+      font-family: "SFMono-Regular", Menlo, monospace;
+    }
+    /* Steps */
+    .steps { counter-reset: step; }
+    .step {
+      display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start;
+    }
+    .step-num {
+      counter-increment: step;
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--accent); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px;
+    }
+    .step-body { padding-top: 4px; }
+    .step-body strong { display: block; margin-bottom: 4px; }
+    .step-body p { font-size: 14px; color: var(--text-muted); margin: 0; }
+    /* Info grid */
+    .info-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px;
+    }
+    .info-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 22px;
+    }
+    .info-card .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .info-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .info-card p  { font-size: 13px; color: var(--text-muted); margin: 0; }
+    section { margin-bottom: 52px; }
+    footer {
+      text-align: center; padding: 32px 24px;
+      font-size: 13px; color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 600px) {
+      .contact-card { flex-direction: column; gap: 16px; padding: 28px 24px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .page-title { font-size: 24px; }
+      main { margin-top: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="logo-mark">W</div>
+    <span class="logo-name">Wevenot</span>
+    <span class="logo-tag">Support</span>
+  </div>
+</header>
+
+<main>
+
+  <h1 class="page-title">用户支持</h1>
+  <p class="page-meta">Wevenot macOS 应用 · 版本 1.0 · 遇到问题？我们来帮您解决</p>
+
+  <!-- Contact Hero -->
+  <div class="contact-card">
+    <div class="icon">✉️</div>
+    <div>
+      <h2>联系开发者</h2>
+      <p>直接发邮件给开发者，我们通常在 <strong style="color:#e8b95e">3–7 个工作日</strong>内回复</p>
+      <a href="mailto:963971056@qq.com?subject=Wevenot%20支持请求&body=应用版本：%0A系统版本：%0A问题描述：%0A">发送支持邮件</a>
+    </div>
+  </div>
+
+  <!-- Feature highlights -->
+  <section>
+    <h2 class="section-title">快速了解 Wevenot</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="card-icon">🔒</div>
+        <h3>完全本地存储</h3>
+        <p>所有笔记保存在您的 Mac 上，不上传云端，不需要账号</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">✍️</div>
+        <h3>Markdown 支持</h3>
+        <p>支持纯文本和 Markdown 格式，实时预览</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🤖</div>
+        <h3>AI 智能整理</h3>
+        <p>自动标签和分类，帮您快速找到需要的笔记</p>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">💾</div>
+        <h3>自动备份</h3>
+        <p>支持自动备份到本地指定文件夹，数据安全无忧</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2 class="section-title">常见问题解答</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">我的笔记存储在哪里？</div>
+      <div class="faq-a">
+        <p>通过 Mac App Store 安装后，数据存储于：</p>
+        <p><code>~/Library/Containers/app.wevenot.mac/Data/Documents/Wevenot/wevenot.db</code></p>
+        <p>您可以直接在 Finder 中导航到此路径查看和备份数据文件。数据永远不会上传到任何服务器。</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">如何将笔记迁移到新 Mac？</div>
+      <div class="faq-a">
+        <ol style="margin:0;padding-left:18px">
+          <li>在旧 Mac 的 Wevenot 中，进入 <strong>设置 → 数据 → 创建备份</strong></li>
+          <li>将备份文件夹复制到新 Mac（通过 AirDrop、外置硬盘或 iCloud Drive）</li>
+          <li>在新 Mac 安装 Wevenot 后，进入 <strong>设置 → 数据 → 从备份恢复</strong>，选择备份文件夹</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Wevenot 需要联网才能使用吗？</div>
+      <div class="faq-a">
+        不需要。Wevenot 的所有核心功能（创建/编辑/搜索笔记、AI 整理）均在本地运行，无需网络连接。只有在使用可选的云端备份功能时才需要联网。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">应用启动后显示空白或闪退，怎么办？</div>
+      <div class="faq-a">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>重启应用</strong>
+              <p>完全退出 Wevenot（Command+Q），然后重新打开</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>检查 macOS 版本</strong>
+              <p>Wevenot 需要 macOS 12 Monterey 或更高版本</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>重新安装</strong>
+              <p>从 Mac App Store 删除并重新下载安装（数据不会丢失）</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-body">
+              <strong>联系我们</strong>
+              <p>如果问题持续，请发邮件至 963971056@qq.com，附上您的 macOS 版本和问题截图</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">如何导出我的笔记？</div>
+      <div class="faq-a">
+        在应用侧边栏选中笔记，右键选择 <strong>导出</strong>，可将笔记导出为纯文本（.txt）或 Markdown（.md）格式。批量导出可在 <strong>设置 → 数据</strong> 中进行。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">如何删除账号或注销？</div>
+      <div class="faq-a">
+        Wevenot 无需账号即可使用，因此没有账号注销的概念。如需彻底删除所有数据：
+        <ol style="margin:8px 0 0;padding-left:18px">
+          <li>在 Finder 中删除数据目录：<code>~/Library/Containers/app.wevenot.mac/</code></li>
+          <li>从 Mac App Store 卸载 Wevenot</li>
+        </ol>
+        执行以上操作后，您在本应用中的所有数据将被彻底删除，且无法恢复。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">AI 整理功能会把我的笔记发送到云端吗？</div>
+      <div class="faq-a">
+        不会。Wevenot 的 AI 整理功能完全在本地设备运行，您的笔记内容不会被发送到任何外部服务器或 AI 提供商。这是我们"本地优先"原则的核心承诺。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">如何提交功能建议或报告 Bug？</div>
+      <div class="faq-a">
+        我们欢迎您的反馈！请发邮件至 <a href="mailto:963971056@qq.com" style="color:var(--accent)">963971056@qq.com</a>，邮件主题注明"功能建议"或"Bug 报告"。Bug 报告请尽量附上：您的 macOS 版本、重现步骤、错误截图（如有）。
+      </div>
+    </div>
+  </section>
+
+  <!-- Response time notice -->
+  <section>
+    <h2 class="section-title">支持说明</h2>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px">
+      <p style="margin-bottom:12px">Wevenot 由个人独立开发者维护。我们承诺：</p>
+      <ul style="padding-left:20px;color:var(--text-muted);font-size:14px">
+        <li style="margin-bottom:8px">所有支持邮件将在 <strong style="color:var(--text)">7 个工作日内</strong>回复</li>
+        <li style="margin-bottom:8px">重大 Bug 将在收到报告后优先修复并发布更新</li>
+        <li style="margin-bottom:8px">我们不提供电话支持，邮件是唯一的支持渠道</li>
+        <li>中文和英文支持均可接受</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Xu Chang. All rights reserved.</p>
+  <p style="margin-top:8px">
+    <a href="privacy.html">隐私政策</a> &nbsp;·&nbsp;
+    <a href="support.html">用户支持</a>
+    &nbsp;·&nbsp; 联系：<a href="mailto:963971056@qq.com">963971056@qq.com</a>
+  </p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
